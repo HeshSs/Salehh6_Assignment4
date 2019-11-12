@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Processes what the user inputted and assigns each command to it's specific class (BlockCommand or PrintCommand)
+ * Processes what the user inputted and assigns each command to it's specific class, which are (BlockCommand or PrintCommand).
  */
 class InputReader {
     private Scanner keyboard;
@@ -10,7 +10,7 @@ class InputReader {
     private int lineNumber = 0;
 
     /**
-     * Starts reading user input on call using Scanner
+     * Starts reading user input on call using Scanner.
      */
     private InputReader() {
         keyboard = new Scanner(System.in);
@@ -28,8 +28,8 @@ class InputReader {
     }
 
     /**
-     * If the command is valid (e.g. PRINT, BEGIN_ or FINISH) add it to the ArrayList of commands
-     * @return ArrayList containing all the inputted commands
+     * If the command is valid (e.g. PRINT, BEGIN_ or FINISH) add it to the ArrayList of commands.
+     * @return ArrayList containing all the inputted commands.
      */
     ArrayList<Command> getCommands() {
         ArrayList<Command> commands = new ArrayList<>();
@@ -58,9 +58,9 @@ class InputReader {
     }
 
     /**
-     * Creates a BlockCommand from the inputted line
-     * @param line Given a command (e.g. CONTRACT, CLAIM, HOME_PLAN etc.)
-     * @return a BlockCommand
+     * Creates a BlockCommand from the inputted line.
+     * @param line Given a command (e.g. CONTRACT, CLAIM, HOME_PLAN etc.).
+     * @return a BlockCommand.
      */
     private Command makeBlockCommand(String line) {
         // Removes "BEGIN_" from the current line to get the command type;
@@ -84,9 +84,9 @@ class InputReader {
     }
 
     /**
-     * Converts a print command to a list of tokens for PrintCommand class
-     * @param line Given a line that starts with PRINT
-     * @return 3 tokens for PrintCommand to print the command
+     * Converts a print command to a list of tokens for PrintCommand class.
+     * @param line Given a line that starts with PRINT.
+     * @return 3 tokens for PrintCommand to print the command.
      */
     private Command makePrintCommand(String line) {
         String[] tokens = line.split(" ", 5);

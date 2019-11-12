@@ -1,6 +1,6 @@
 /**
- * The Tag class creates an enum class Relation that converts characters '&lt;', '&gt;' and '='
- * to it's actual operation SMALLER, LARGER and EQUAL
+ * The Tag class creates an enum class Relation that converts characters '>', '<' and '='
+ * to it's actual operation SMALLER, LARGER and EQUAL as enums.
  */
 class Tag {
     public enum Relation {

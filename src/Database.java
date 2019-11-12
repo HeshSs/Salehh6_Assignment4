@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * The Database class stores all the data that was processed using other classes in lists
+ * The Database class stores all the data that was processed using other classes in ArrayLists
  */
 class Database {
     private ArrayList<Customer> customers = new ArrayList<>();
@@ -95,8 +95,8 @@ class Database {
     }
 
     /**
-     * Calculates the total amount that was received from the claims by the costumer
-     * @return Total received from the claim by the costumer
+     * Calculates the total amount that was received from the claims by the customer
+     * @return Total received from the claims by the costumer
      */
     long totalReceivedAmountByCustomer(String customerName) {
         long totalReceived = 0;
@@ -113,17 +113,17 @@ class Database {
     }
 
     /**
-     * Calculates the number of costumers that are currently under the given plan
-     * @return Total number of users of the plan
+     * Calculates the number of costumers that are under the given plan
+     * @return Total number of customers of the plan
      */
-    int numberOfCustomers(String plan) {
-        int number = 0;
+    long numberOfCustomers(String plan) {
+        long counter = 0;
         for (Contract contract : contracts) {
-            if (plan.equals(contract.getPlanName())) {
-                number++;
+            if (contract.getPlanName().equals(plan)) {
+                counter++;
             }
         }
-        return number;
+        return counter;
     }
 
     /**
@@ -132,9 +132,12 @@ class Database {
      */
     long totalPaidToCostumers(String plan) {
         long total = 0;
-        for (Contract contract : contracts) {
-            if (contract.getPlanName().equals(plan)) {
+        ArrayList<String> occurs = new ArrayList<>();
+        for (Claim claim : claims) {
+            Contract contract = getContract(claim.getContractName());
+            if (contract.getPlanName().equals(plan) && claim.wasSuccessful() && !occurs.contains(contract.getCustomerName())) {
                 total += totalReceivedAmountByCustomer(contract.getCustomerName());
+                occurs.add(contract.getCustomerName());
             }
         }
         return total;

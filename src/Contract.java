@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * The Contract class processes a contract and stores the data in the database
+ * The Contract class processes a contract and contains it's info (e.g. customer name or the plan that the contract is under etc.)
  */
 class Contract {
     private String contractName;
@@ -15,6 +15,9 @@ class Contract {
 
     static final String inputTag = "CONTRACT";
 
+    /**
+     * The Contract constructor creates a Contract object from the inputted info
+     */
     Contract(HashMap<String, Tag> tags) throws ParseException {
         contractName = tags.get("CONTRACT_NAME").getValue();
         customerName = tags.get("CUSTOMER_NAME").getValue();

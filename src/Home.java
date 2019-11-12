@@ -11,6 +11,9 @@ class Home extends Insurable {
 
     static final String inputTag = "HOME";
 
+    /**
+     * The Home constructor creates a Home object from the inputted info
+     */
     Home(HashMap<String, Tag> tags) throws ParseException {
         super(tags);
         postalCode = tags.get("POSTAL_CODE").getValue();

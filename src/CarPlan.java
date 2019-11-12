@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -24,7 +22,7 @@ class CarPlan extends Plan {
         if (!(insurable instanceof Car))
             return false;
         Car car = (Car) insurable;
-        return mileageCriterion.isInRange(car.getMileague());
+        return mileageCriterion.isInRange(car.getMileage());
     }
 
     @Override

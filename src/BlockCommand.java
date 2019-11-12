@@ -2,7 +2,7 @@ import java.text.ParseException;
 import java.util.HashMap;
 
 /**
- * The BlockCommand class adds the inputted data (e.g. COSTUMER, CLAIM, CAR etc.) to the database
+ * The BlockCommand class adds the inputted data (e.g. COSTUMER, CLAIM, CAR etc.) to the database and can process claims.
  */
 class BlockCommand extends Command {
     private String blockType;
@@ -20,7 +20,7 @@ class BlockCommand extends Command {
         return blockType;
     }
 
-    //Adds the new inputted data (e.g. new Costumer, Claim, Car etc.) to the database
+    // Adds the new inputted data (e.g. new Costumer, Claim, Car etc.) to the database
     @Override
     void run(Database database) throws ParseException {
         if (blockType.equals(Customer.inputTag)) {

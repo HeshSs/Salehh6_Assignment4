@@ -11,7 +11,7 @@ public class Main {
 
             CommandHandler commandHandler = new CommandHandler(new Database()); /* Creates a database to store the data from commands */
 
-            // while command FINISH is not entered keep adding the commands to the database
+            // while command FINISH is not entered keep adding the commands to the database.
             while (currentCommand.hasNext()) {
                 commandHandler.run(currentCommand.next());
             }

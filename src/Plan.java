@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * This class processes all the PLAN commands and adds the data to the database
+ * This class processes all the PLAN commands and adds the data to the database.
  */
 abstract class Plan {
     String name;
@@ -15,7 +15,9 @@ abstract class Plan {
     RangeCriterion customerAgeCriterion = new RangeCriterion();
     RangeCriterion customerIncomeCriterion = new RangeCriterion();
 
-    // Plan class constructor
+    /**
+     * The Plan constructor creates a Plan object and contains stores it's info.
+     */
     Plan(HashMap<String, Tag> tags) {
         name = tags.get("NAME").getValue();
         premium = Integer.parseInt(tags.get("PREMIUM").getValue());
@@ -36,16 +38,15 @@ abstract class Plan {
     abstract Insurable getInsuredItem(Customer customer, Database database);
 
     /**
-     * Checks if the costumer is eligible to get the plan
-     * @param currentDate Date of the eligibility check
+     * Checks if the costumer is eligible to get the plan.
+     * @param currentDate Date of the eligibility check.
      * @return
      */
     boolean isEligible(Customer customer, Date currentDate) {
-        // Extracting the age of the customer
+        // Extracting the age of the customer.
         LocalDate localCurrentDate = currentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate localBirthDate = customer.getDateOfBirth().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         long age = localCurrentDate.getYear() - localBirthDate.getYear();
-        System.out.println("Person's age is " + age);
         // Checking if the age is in the range.
         if (!customerAgeCriterion.isInRange(age))
             return false;

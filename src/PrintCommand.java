@@ -1,5 +1,5 @@
 /**
- * The PrintCommand class handles all the commands that start with PRINT and outputs it's message
+ * The PrintCommand class handles all the commands that start with PRINT and outputs it's message.
  */
 class PrintCommand extends Command {
     private String entityType;
@@ -7,8 +7,8 @@ class PrintCommand extends Command {
     private String queryValue;
 
     /**
-     * Gets a list of tokens from the makePrintCommand and creates variables out of each token
-     * @param tokens A list of String tokens
+     * Gets a list of tokens from the makePrintCommand and creates variables out of each token.
+     * @param tokens A list of String tokens.
      */
     PrintCommand(String[] tokens) {
         super();
@@ -17,7 +17,7 @@ class PrintCommand extends Command {
         queryValue = tokens[3];
     }
 
-     //Processes the PRINT COSTUMER, PRINT PLAN command or throws an exception
+    //Processes the PRINT COSTUMER, PRINT PLAN command or throws an exception.
     @Override
     void run(Database database) {
         if (entityType.equals("CUSTOMER"))
@@ -29,7 +29,7 @@ class PrintCommand extends Command {
         }
     }
 
-    // Processes the TOTAL_CLAIMED or TOTAL_RECEIVED command and prints the output
+    // Processes the TOTAL_CLAIMED or TOTAL_RECEIVED command and prints the output.
     private void runPrintCustomer(Database database) {
         if (queryType.equals("TOTAL_CLAIMED")) {
             System.out.println("Total amount claimed by " + database.getCustomer(queryValue).getName() +
@@ -40,7 +40,7 @@ class PrintCommand extends Command {
         }
     }
 
-    // Processes the NUM_CUSTOMERS or TOTAL_PAYED_TO_CUSTOMERS command and prints the output
+    // Processes the NUM_CUSTOMERS or TOTAL_PAYED_TO_CUSTOMERS command and prints the output.
     private void runPrintPlan(Database database) {
         if (queryType.equals("NUM_CUSTOMERS")) {
             System.out.println("Number of customers under " + database.getPlan(queryValue).getName() +

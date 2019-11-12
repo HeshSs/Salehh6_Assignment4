@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * The Claim class processes a claim and can check if a claim was successful or not
+ * The Claim class processes a claim and can check if a claim was successful or not.
  */
 class Claim {
     private String contractName;

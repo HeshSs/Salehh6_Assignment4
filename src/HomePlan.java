@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  * The HomePlan class creates a HomePlan from input BEGIN_HOME_PLAN and can check if a house
- * is insurable or eligible for the plan
+ * is insurable or eligible for the plan.
  */
 class HomePlan extends Plan {
     static final String inputTag = "HOME_PLAN";
@@ -23,7 +23,7 @@ class HomePlan extends Plan {
         }
     }
 
-    // Checks if the house is eligible to get the plan
+    // Checks if the house is eligible to get the plan.
     @Override
     boolean isEligible(Insurable insurable, Date date) {
         if (!(insurable instanceof Home))
@@ -31,8 +31,7 @@ class HomePlan extends Plan {
         Home home = (Home) insurable;
         if (!homeValueCriterion.isInRange(home.getValue()))
             return false;
-
-        // Extracting the age of the customer
+        // Extracting the age of the customer.
         LocalDate localCurrentDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate localBuiltDate = home.getBuildDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         long age = localCurrentDate.getYear() - localBuiltDate.getYear();
